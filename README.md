@@ -1,8 +1,7 @@
-# dlnrcan
-Download Seismic Waveforms from Natural Resources of Canada Website
-
-Welcome to the NRCAN Data Downloader repository! This Python script allows you to easily download data from 
-Natural Resources Canada (NRCAN).
+#CanadaSeismicDownloader
+Welcome to the NRCAN Data Downloader (Canada Seismic Downloader) repository! This Python script allows you to easily download data from 
+Natural Resources Canada (NRCAN), specifically designed for use with EQTransformer. In case you are struggling with networks like POLARIS that
+their data is only available on NRCAN, you can benefit from this code.
 
 ## Installation
 
@@ -10,18 +9,17 @@ To get started with nrcandownloader, follow these simple steps:
 
 1. **Clone the Repository**
     ```
-    git clone https://github.com/yourusername/nrcandownloader.git
+    git clone https://github.com/sinamahani/CanadaSeismicDownloader.git
     ```
-    Replace "yourusername" with your actual GitHub username.
 
 2. **Make the Script Executable**
     After cloning the repository, navigate to the project directory:
     ```
-    cd nrcandownloader
+    cd CanadaSeismicDownloader
     ```
     Then make the main script executable by running:
     ```
-    chmod +x dlnrcan
+    chmod +x wavedl
     ```
 
 ## Usage
@@ -29,13 +27,23 @@ To get started with nrcandownloader, follow these simple steps:
 To use the script, simply run:
 
 ```
-./dlnrcan
+./wavedl --network PO --station ARVN --begin 2005-07-02 --end 2005-08-02 --directory data
 ```
 
 The script will prompt you for any necessary input such as the dataset name or specific parameters. Follow the 
-on-screen instructions to download the desired data from NRCAN.
+on-screen instructions to download the desired data from NRCAN in a format suitable for EQTransformer.
 
 Note that you'll need a proper internet connection and appropriate access permissions to NRCAN data resources.
+
+## Help
+
+For additional information, run:
+```
+./wavedl --help
+```
+This will display the list of available options and their descriptions. If you encounter any issues or have 
+questions while using nrcandownloader, feel free to submit an issue here on GitHub or reach out via email at 
+sina.sabermahani@gmail.com.
 
 ## Contributing
 
