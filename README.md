@@ -22,6 +22,9 @@ To get started with nrcandownloader, follow these simple steps:
     ```
     chmod +x wavedl
     ```
+    python3 -m venv .CanadaSeismicDownloader
+    source .CanadaSeismicDownloader/bin/activate
+   ```
 
 ## Usage
 
