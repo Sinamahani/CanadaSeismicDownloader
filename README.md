@@ -27,8 +27,13 @@ To get started with nrcandownloader, follow these simple steps:
     python3 -m venv .CanadaSeismicDownloader
    ```
    Then, activate the created env
+   For Mac/Linux:
    ```
     source .CanadaSeismicDownloader/bin/activate
+   ```
+   For Windows (cmd):
+   ```
+    CanadaSeismicDownloader\Scripts\activate
    ```
 
 ## Usage
