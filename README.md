@@ -1,4 +1,4 @@
-#CanadaSeismicDownloader
+![LOGO](logo.png)
 
 Welcome to the NRCAN Data Downloader (Canada Seismic Downloader) repository! This Python script allows you to easily download data from 
 Natural Resources Canada (NRCAN), specifically designed for use with EQTransformer. In case you are struggling with networks like POLARIS that
