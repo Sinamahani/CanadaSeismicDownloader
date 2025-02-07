@@ -17,8 +17,6 @@ from urllib.error import HTTPError
 import time
 import argparse
 
-
-
 # Create Argument Parser
 parser = argparse.ArgumentParser(description='Download seismic data from NRCan specifically and IRIS FDSN web services in general.')
 
@@ -133,11 +131,14 @@ def download_from_nrcan(nt_code: str, st_code: str, bg: str = None, ed: str = No
                     wv_ch.detrend('linear')
                     wv_ch.merge(fill_value='interpolate')
                     # wv_ch.resample(100)
-                    wv_ch.remove_response(inventory=st_data, output="VEL", pre_filt=(0.01, 0.02, 45, 50))
-                    wv_ch.trim(starttime=bg, endtime=bg + chunk_size)
-                    file_name = f"{wv_ch[0].stats.network}.{wv_ch[0].stats.station}.{wv_ch[0].stats.location}.{wv_ch[0].stats.channel}__{wv_ch[0].stats.starttime.strftime('%Y%m%d%H%M%S')}__{wv_ch[0].stats.endtime.strftime('%Y%m%d%H%M%S')}.mseed"
-                    wv_ch.write(f"{folder}/{file_name}", format='MSEED')
-                    print(f"                \u2713 \u2713{file_name} saved \u2713 \u2713")
+                    try:
+                        wv_ch.remove_response(inventory=st_data, output="VEL", pre_filt=(0.01, 0.02, 45, 50))
+                        wv_ch.trim(starttime=bg, endtime=bg + chunk_size)
+                        file_name = f"{wv_ch[0].id}__{wv_ch[0].stats.starttime.strftime('%Y%m%dT%H%M%SZ')}__{wv_ch[0].stats.endtime.strftime('%Y%m%dT%H%M%SZ')}.mseed"
+                        wv_ch.write(f"{folder}/{file_name}", format='MSEED')
+                        print(f"                \u2713 \u2713{file_name} saved \u2713 \u2713")
+                    except:
+                        print(f"                \u00D7 \u00D7 There is a problem with matching the channel respose - file NOT saved! \u00D7 \u00D7")
                 else:
                     print(f"                \u00D7 \u00D7 channel NOT found \u00D7 \u00D7")
             bg += chunk_size
